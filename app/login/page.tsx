@@ -1,13 +1,26 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { createClient } from "@/lib/supabase/client";
 
 const Login = () => {
+  const handleLogin = async () => {
+    const supabase = createClient();
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:3000/auth/callback",
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+    });
+  };
+
   return (
     <div>
-      <h1>ログインページ</h1>
-      <button onClick={() => signIn("google", { redirectTo: "/" })}>
-        Googleでログイン
+      <button type="button" onClick={handleLogin}>
+        Login with Google
       </button>
     </div>
   );

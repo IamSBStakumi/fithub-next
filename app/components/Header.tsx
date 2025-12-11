@@ -1,18 +1,14 @@
 "use client";
 
-import { signOut } from "next-auth/react";
-import { useSession } from "next-auth/react";
-
 const Header = () => {
-  const session = useSession();
   const handleSignOut = () => {
-    signOut();
+    window.location.href = "/auth/signout";
   };
 
   return (
     <header>
       <h1>Header</h1>
-      {session.data?.user && <button onClick={handleSignOut}>Logout</button>}
+      <button onClick={handleSignOut}>Sign out</button>
     </header>
   );
 };

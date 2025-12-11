@@ -1,13 +1,12 @@
 "use client";
 
-import { signIn } from "next-auth/react";
-
 const Login = () => {
+  const handleLogin = async () => {};
+
   return (
     <div>
-      <h1>ログインページ</h1>
-      <button onClick={() => signIn("google", { redirectTo: "/" })}>
-        Googleでログイン
+      <button type="button" onClick={handleLogin}>
+        Login with Google
       </button>
     </div>
   );

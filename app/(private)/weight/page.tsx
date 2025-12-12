@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import WeightInputField from "../../components/input/WeightInputField";
 
 const WeightPage = () => {
   const [weight, setWeight] = useState("");
@@ -17,25 +18,7 @@ const WeightPage = () => {
     setWeight("");
   };
 
-  return (
-    <div className="p-4 space-y-4">
-      <h1 className="text-xl font-bold">今日の体重</h1>
-      <input
-        type="number"
-        step="0.1"
-        value={weight}
-        onChange={(e) => setWeight(e.target.value)}
-        className="border p-2 rounded w-full"
-        placeholder="70.4"
-      />
-      <button
-        onClick={handleSubmit}
-        className="bg-black text-white p-2 rounded w-full"
-      >
-        保存
-      </button>
-    </div>
-  );
+  return <WeightInputField weight={weight} setWeight={setWeight} handleSubmit={handleSubmit} />;
 };
 
 export default WeightPage;

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import Header from "../components/Header";
 import ReactQueryProvider from "@/providers/QueryClientProvider";
+import Header from "../components/Header";
+import Loading from "../components/Loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,9 @@ export default function RootLayout({
     <html lang="ja">
       <ReactQueryProvider>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <Header />
+          <Suspense fallback={<Loading />}>
+            <Header />
+          </Suspense>
           {children}
         </body>
       </ReactQueryProvider>

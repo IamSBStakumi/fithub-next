@@ -1,5 +1,8 @@
+import { getBaseUrl } from "@/utils/url";
+
 const fetchMyProfile = async () => {
-  const res = await fetch("/api/profiles/me", {
+  const url = `${getBaseUrl()}/api/profiles/me`;
+  const res = await fetch(url, {
     method: "GET",
     credentials: "include", // Supabase Cookie用
   });

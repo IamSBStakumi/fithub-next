@@ -13,6 +13,8 @@ export async function GET(request: Request) {
   }
 
   if (!code) {
+    console.error("No code");
+
     // return the user to an error page with instructions
     return NextResponse.redirect(`${origin}/auth/auth-code-error`);
   }
@@ -20,7 +22,9 @@ export async function GET(request: Request) {
   const supabase = await createClient();
   const { error } = await supabase.auth.exchangeCodeForSession(code);
 
-  if (!error) {
+  if (error) {
+    console.error("Error: ", error);
+
     // return the user to an error page with instructions
     return NextResponse.redirect(`${origin}/auth/auth-code-error`);
   }

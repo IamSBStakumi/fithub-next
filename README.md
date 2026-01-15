@@ -14,7 +14,7 @@ FitHub-Next は、ユーザーの体重管理・運動記録を可視化し、�
 
 技術スタックは以下の通りです。
 
-- Framework: Next.js 15 (App Router)
+- Framework: Next.js 16 (App Router)
 - Language: TypeScript
 - UI & Styling: React 19, Tailwind CSS v4
 - State Management / Data Fetching: TanStack Query (React Query)

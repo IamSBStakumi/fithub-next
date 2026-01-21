@@ -13,9 +13,14 @@ const WeightPage = () => {
       method: "POST",
       body: JSON.stringify({ weight }),
       headers: { "Content-Type": "application/json" },
-    });
-    alert("🎉 記録しました!");
-    setWeight("");
+    })
+      .then(() => {
+        alert("🎉 記録しました!");
+        setWeight("");
+      })
+      .catch(() => {
+        alert("エラーが発生しました。");
+      });
   };
 
   return <WeightInputField weight={weight} setWeight={setWeight} handleSubmit={handleSubmit} />;
